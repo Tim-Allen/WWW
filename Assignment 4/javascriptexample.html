@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<body>
+	<h1>User Input Error Checking</h1>
+
+	<form name="form" action="" onsubmit="return emailCheck();" method="post">
+	Name: <input id="name" type="text">
+	<br />
+	Email: <input id="email" type="text">
+	<br />
+	Phone Number: <input id="phone" type="text" placeholder="XXXXXXXXXX">	
+	<input type="submit" value="Submit">
+</form>
+	<p id="valid"></p>
+
+<script>
+function emailCheck() { 
+	
+	var email = document.forms["form"]["email"].value;
+	var name = document.forms["form"]["name"].value;
+	var phone = document.forms["form"]["phone"].value;
+	var atpos = email.indexOf("@");
+	var dotpos = email.indexOf(".");
+	if(name == null || name =="")
+	{
+		alert("Please Enter Your Name!");
+		document.form.name.focus();
+		return false;
+	}
+	if(email == null || email =="")
+	{
+		alert("Please enter an email address");
+		return false;
+	}
+	if(atpos < 1 || dotpos < atpos+2 || dotpos+2>email.length)
+	{
+		alert("Not a valid e-mail address");
+		return false;
+	}
+	if(isNaN(phone) || phone.length<10)
+	{
+		alert("Please Enter A valid Phone Number")
+		return false;
+	}
+	
+
+    
+}
+</script>
+</body>
+</html>
